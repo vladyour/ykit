@@ -1,0 +1,75 @@
+@import "color-schema";
+
+$avatarColorConfig: (
+        "transparent": (
+                "background": transparent,
+                "color": $black
+        ),
+        "white": (
+                "background": $white,
+                "color": $black
+        ),
+        "black": (
+                "background": $black,
+                "color": $white
+        )
+);
+
+$avatarSizeConfig: (
+        "s": 30px,
+        "m": 40px,
+        "l": 50px
+);
+
+$avatarShapeConfig: "circle";
+
+$avatarConfig: (
+        "size": $avatarSizeConfig,
+        "color": $avatarColorConfig,
+        "shape": $avatarShapeConfig,
+        "defaultSize": "m",
+        "defaultColor": "white"
+);
+
+@mixin avatar($avatarConfig) {
+  ykit-avatar {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+
+    $colorConfig: map-get($avatarConfig, "color");
+    @each $className, $config in $colorConfig {
+      &.ykit-avatar-#{$className} {
+        background: map-get($config, "background");
+        color: map-get($config, "color");
+      }
+    }
+
+    $defaultColor: map-get($avatarConfig, "defaultColor");
+    & {
+      $config: map-get($colorConfig, $defaultColor);
+      background: map-get($config, "background");
+      color: map-get($config, "color");
+    }
+
+    $sizeConfig: map-get($avatarConfig, "size");
+    @each $className, $config in $sizeConfig {
+      &.ykit-avatar-#{$className} {
+        height: $config;
+        width: $config;
+      }
+    }
+
+    $defaultSize: map-get($avatarConfig, "defaultSize");
+    & {
+      height: map-get($sizeConfig, $defaultSize);
+      width: map-get($sizeConfig, $defaultSize);
+    }
+
+    $shapeConfig: map-get($avatarConfig, "shape");
+    @if ($shapeConfig == 'circle') {
+      border-radius: 50%;
+    }
+  }
+}

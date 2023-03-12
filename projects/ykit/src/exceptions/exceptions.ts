@@ -1,0 +1,1 @@
+export const INVALID_ARGUMENTS_NULL_OR_EMPTY = "Input arguments should not be null or empty"
