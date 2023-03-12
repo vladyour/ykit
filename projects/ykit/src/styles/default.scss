@@ -1,0 +1,5 @@
+@import "avatar.component";
+
+@mixin default() {
+  @include avatar($avatarConfig)
+}

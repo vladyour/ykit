@@ -1,0 +1,32 @@
+{
+  "name": "@vladyour/ykit",
+  "version": "0.0.2",
+  "exports": {
+    ".": {
+      "sass": "./_index.scss"
+    }
+  },
+  "peerDependencies": {
+    "@angular/common": "^15.2.0",
+    "@angular/core": "^15.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladyour/ykit.git"
+  },
+  "keywords": [
+    "angular",
+    "css",
+    "style",
+    "components"
+  ],
+  "author": "Vlad Yurevich <vlad.your8@gmail.com> (www.linkedin.com/in/vladyour)",
+  "license": "MIT"
+}
