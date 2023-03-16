@@ -1,5 +1,12 @@
 @import "avatar.component";
+@import "body.component";
+@import "button.component";
+@import "color-schema";
 
 @mixin default() {
-  @include avatar($avatarConfig)
+  @include bodyComponent($bodyConfig, $colorSchema);
+  @include avatar($avatarConfig);
+  @include button($buttonConfig, $colorSchema);
 }
+
+@include default();
