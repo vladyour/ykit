@@ -1,0 +1,11 @@
+$bodyConfig: (
+    "background": "white",
+    "color": "black"
+);
+
+@mixin bodyComponent($bodyConfig, $colorSchema) {
+  body {
+    background: map-get($colorSchema, map-get($bodyConfig, "background"));
+    color: map-get($colorSchema, map-get($bodyConfig, "color"));
+  }
+}

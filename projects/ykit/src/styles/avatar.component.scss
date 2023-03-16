@@ -1,34 +1,34 @@
 @import "color-schema";
 
 $avatarColorConfig: (
-        "transparent": (
-                "background": transparent,
-                "color": $black
-        ),
-        "white": (
-                "background": $white,
-                "color": $black
-        ),
-        "black": (
-                "background": $black,
-                "color": $white
-        )
+    "transparent": (
+        "background": transparent,
+        "color": $black
+    ),
+    "white": (
+        "background": $white,
+        "color": $black
+    ),
+    "black": (
+        "background": $black,
+        "color": $white
+    )
 );
 
 $avatarSizeConfig: (
-        "s": 30px,
-        "m": 40px,
-        "l": 50px
+    "s": 30px,
+    "m": 40px,
+    "l": 50px
 );
 
 $avatarShapeConfig: "circle";
 
 $avatarConfig: (
-        "size": $avatarSizeConfig,
-        "color": $avatarColorConfig,
-        "shape": $avatarShapeConfig,
-        "defaultSize": "m",
-        "defaultColor": "white"
+    "size": $avatarSizeConfig,
+    "color": $avatarColorConfig,
+    "shape": $avatarShapeConfig,
+    "defaultSize": "m",
+    "defaultColor": "white"
 );
 
 @mixin avatar($avatarConfig) {

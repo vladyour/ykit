@@ -1,0 +1,151 @@
+$sizeButtonConfig: (
+    "s": (
+        "fontSize": 12px,
+        "padding": 4px 6px,
+        "margin": 2px
+    ),
+    "m": (
+        "fontSize": 14px,
+        "padding": 6px 8px,
+        "margin": 0 2px
+    ),
+    "l": (
+        "fontSize": 16px,
+        "padding": 8px 10px,
+        "margin": 0 2px
+    ),
+);
+
+$colorButtonConfig: (
+    "info": (
+        "background": "info",
+        "color": "white",
+    ),
+    "success": (
+        "background": "success",
+        "color": "white",
+    ),
+    "warning": (
+        "background": "warning",
+        "color": "white",
+    ),
+    "danger": (
+        "background": "danger",
+        "color": "white",
+    ),
+    "link": (
+        "background": "transparent",
+        "color": "black"
+    )
+);
+
+$borderButtonConfig: (
+    "border": none,
+    "borderRadius": 5px
+);
+
+$buttonConfig: (
+    "sizeConfig": $sizeButtonConfig,
+    "defaultSizeConfig": "m",
+    "colorConfig": $colorButtonConfig,
+    "defaultColorConfig": "info",
+    "borderConfig": $borderButtonConfig,
+);
+
+@mixin button($buttonConfig, $colorSchema) {
+  a.ykit-button, button.ykit-button {
+    cursor: pointer;
+    outline: none;
+
+    $sizeConfig: map-get($buttonConfig, "sizeConfig");
+
+    & {
+      $defaultSizeConfig: map-get($sizeConfig, map-get($buttonConfig, "defaultSizeConfig"));
+      @include sizeStyle($defaultSizeConfig);
+    }
+
+    @each $className, $config in $sizeConfig {
+      &.ykit-button-#{$className} {
+        @include sizeStyle($config);
+      }
+    }
+
+    $colorConfig: map-get($buttonConfig, "colorConfig");
+
+    & {
+      $defaultColorConfig: map-get($colorConfig, map-get($buttonConfig, "defaultColorConfig"));
+      @include colorStyle($defaultColorConfig, $colorSchema);
+    }
+
+    @each $className, $config in $colorConfig {
+      &.ykit-button-#{$className} {
+        @include colorStyle($config, $colorSchema);
+      }
+    }
+
+    $borderConfig: map-get($buttonConfig, "borderConfig");
+    & {
+      border: map-get($borderConfig, "border");
+      border-radius: map-get($borderConfig, "borderRadius");
+    }
+  }
+
+  .ykit-button-group {
+    &:first-of-type {
+      margin-left: 1px;
+      margin-right: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:not(:first-of-type) {
+      margin-left: 1px;
+      margin-right: 0;
+    }
+
+    &:not(:first-of-type):not(:last-of-type) {
+      border-radius: 0;
+    }
+
+    &:last-of-type {
+      margin-right: 1px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+@mixin sizeStyle($config) {
+  font-size: map-get($config, "fontSize");
+  padding: map-get($config, "padding");
+  margin: map-get($config, "margin");
+}
+
+@mixin colorStyle($colorConfig, $colorSchema) {
+  $palette: map-get($colorSchema, "palette");
+  $background: map-get($colorConfig, "background");
+  $backgroundPalette: map-get($palette, $background);
+  $normal: map-get($backgroundPalette, "normal");
+  background: $normal;
+
+  &:hover {
+    background: map-get($backgroundPalette, "hover");
+  }
+
+  &:focus {
+    box-shadow: 0 0 3px 2px transparentize($normal, 0.5);
+  }
+
+  &:active {
+    box-shadow: 0 0 2px 1px transparentize($normal, 0.7);
+  }
+
+  &[disabled] {
+    background: transparentize($normal, 0.6);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  $color: map-get($colorSchema, map-get($colorConfig, "color"));
+  color: $color;
+}
