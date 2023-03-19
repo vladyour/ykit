@@ -1,12 +1,16 @@
+@import "accordion.component";
 @import "avatar.component";
 @import "body.component";
 @import "button.component";
 @import "color-schema";
+@import "expandable.component";
 
 @mixin default() {
   @include bodyComponent($bodyConfig, $colorSchema);
   @include avatar($avatarConfig);
   @include button($buttonConfig, $colorSchema);
+  @include expandable($expandableConfig, $colorSchema);
+  @include accordion();
 }
 
 @include default();

@@ -1,0 +1,23 @@
+@mixin accordion() {
+  ykit-accordion {
+    ykit-expandable {
+      &:first-child, &:not(:last-child) {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:last-child, &:not(:first-child) {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+
+      &:not(:first-child).collapsed:not(.expanded + .collapsed) {
+        border-top: 0;
+      }
+
+      &.expanded {
+        margin: 10px 0;
+      }
+    }
+  }
+}

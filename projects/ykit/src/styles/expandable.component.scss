@@ -1,0 +1,72 @@
+$expandableConfig: (
+    "hoverBackgroundColor": "black",
+    "borderConfig": (
+        "size": 1px,
+        "color": "black",
+        "tranparency": 0.8,
+        "headerPadding": 15px,
+        "contentPaddingVertical": 10px,
+        "contentPaddingHorizontal": 20px,
+        "radius": 5px
+    ),
+    "boxShadowConfig": (
+        "position": 2px 1px 5px 0px,
+        "color": "black"
+    )
+);
+
+@mixin expandable($expandableConfig, $colorSchema) {
+
+  ykit-expandable {
+    display: block;
+    position: relative;
+
+    $borderConfig: map-get($expandableConfig, "borderConfig");
+
+    $borderColorName: map-get($borderConfig, "color");
+    $borderColor: map-get($colorSchema, $borderColorName);
+    $transparency: map-get($borderConfig, "tranparency");
+    $borderColorConfig: map-get($borderConfig, "size") solid transparentize($borderColor, $transparency);
+    border: $borderColorConfig;
+
+    border-radius: map-get($borderConfig, "radius");
+
+    ykit-expandable-header {
+      display: block;
+      padding: map-get($borderConfig, "headerPadding");
+      font-weight: 600;
+      cursor: pointer;
+
+      &:hover {
+        $hoverBackgroundColorName: map-get($expandableConfig, "hoverBackgroundColor");
+        $hoverBackgroundColor: map-get($colorSchema, $hoverBackgroundColorName);
+        background: transparentize($hoverBackgroundColor, 0.96);
+      }
+    }
+
+    $contentPaddingHorizontal: map-get($borderConfig, "contentPaddingHorizontal");
+    $contentPaddingVertical: map-get($borderConfig, "contentPaddingVertical");
+
+    ykit-expandable-content {
+      display: block;
+      overflow: hidden;
+
+      padding: $contentPaddingVertical $contentPaddingHorizontal;
+      border-top: $borderColorConfig;
+    }
+
+    $boxShadowConfig: map-get($expandableConfig, "boxShadowConfig");
+    $boxShadowColorName: map-get($boxShadowConfig, "color");
+    $boxShadowColor: map-get($colorSchema, $boxShadowColorName);
+    box-shadow: map-get($boxShadowConfig, "position") transparentize($boxShadowColor, 0.9);
+    &.collapsed {
+      box-shadow: none;
+
+      ykit-expandable-content {
+        max-height: 0;
+        padding: 0 $contentPaddingHorizontal;
+        border-top: 0;
+      }
+    }
+  }
+}
