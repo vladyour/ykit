@@ -1,0 +1,72 @@
+@use 'border.component';
+@use 'box-shadow.component';
+@use 'box.component';
+
+$formElementConfig: (
+    "maxWidth": 350px,
+    "errorColorName": "danger",
+    "boxConfig": box.$boxConfig,
+    "focusBorderConfig": (
+        "radius": 5px,
+        "width": 1px,
+        "colorName": "info",
+        "transparency": 0
+    ),
+    "labelConfig": (
+        "fontSize": 12px
+    ),
+    "messageConfig": (
+        "fontSize": 11px
+    )
+);
+
+@mixin formElement($formElementConfig, $colorSchema) {
+  ykit-form-element {
+    display: block;
+    vertical-align: top;
+    max-width: map-get($formElementConfig, "maxWidth");
+    input {
+      display: block;
+      background: transparent;
+      box-sizing: border-box;
+
+      $boxConfig: map-get($formElementConfig, "boxConfig");
+      @include box.boxStyle($boxConfig, $colorSchema);
+
+      width: 100%;
+
+      &:focus {
+        $focusBorderConfig: map-get($formElementConfig, "focusBorderConfig");
+        @include border.borderStyle($focusBorderConfig, $colorSchema);
+      }
+
+      outline: none;
+    }
+
+    .ykit-form-label-wrapper, .ykit-form-message-wrapper {
+      display: block;
+      min-height: 1.3em;
+      padding: 1px 5px;
+    }
+
+    .ykit-form-label-wrapper {
+      $messageConfig: map-get($formElementConfig, "labelConfig");
+      font-size: map-get($messageConfig, "fontSize");
+      font-weight: 600;
+    }
+
+    .ykit-form-message-wrapper {
+      $messageConfig: map-get($formElementConfig, "messageConfig");
+      font-size: map-get($messageConfig, "fontSize");
+    }
+
+    &.error {
+      $color: map-get($colorSchema, map-get($formElementConfig, "errorColorName"));
+      color: $color;
+
+      input {
+        border-color: $color;
+      }
+    }
+  }
+}

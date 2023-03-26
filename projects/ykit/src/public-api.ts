@@ -1,3 +1,8 @@
+export * from './lib/components/form/form.module';
+export * from './lib/components/form/form-element/form-element.component';
+export * from './lib/components/form/form-label/form-label.component';
+export * from './lib/components/form/form-message/form-message.component';
+
 export * from './lib/components/avatar/avatar.module';
 export * from './lib/components/avatar/avatar.component';
 

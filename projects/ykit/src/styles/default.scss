@@ -4,6 +4,7 @@
 @import "button.component";
 @import "color-schema";
 @import "expandable.component";
+@import "form-element.component";
 
 @mixin default() {
   @include bodyComponent($bodyConfig, $colorSchema);
@@ -11,6 +12,7 @@
   @include button($buttonConfig, $colorSchema);
   @include expandable($expandableConfig, $colorSchema);
   @include accordion();
+  @include formElement($formElementConfig, $colorSchema);
 }
 
 @include default();

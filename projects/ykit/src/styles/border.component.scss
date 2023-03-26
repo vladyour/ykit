@@ -1,0 +1,18 @@
+$borderConfig: (
+    "radius": 5px,
+    "width": 1px,
+    "colorName": "black",
+    "transparency": 0.9
+);
+
+@mixin borderStyle($borderConfig, $colorSchema) {
+  $radius: map-get($borderConfig, "radius");
+  border-radius: $radius;
+
+  $width: map-get($borderConfig, "width");
+  $colorName: map-get($borderConfig, "colorName");
+  $color: map-get($colorSchema, $colorName);
+  $transparency: map-get($borderConfig, "transparency");
+
+  border: $width solid transparentize($color, $transparency)
+}

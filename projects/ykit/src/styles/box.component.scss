@@ -1,0 +1,26 @@
+@import "border.component";
+@import "box-shadow.component";
+
+$boxConfig: (
+    "padding": 10px,
+    "borderConfig": (
+        "radius": 5px,
+        "width": 1px,
+        "colorName": "black",
+        "transparency": 0.9
+    ),
+    "boxShadowConfig": (
+        "position": 2px 1px 5px 0px,
+        "colorName": "black",
+        "transparency": 0.9
+    )
+);
+
+@mixin boxStyle($boxConfig, $colorSchema) {
+  $padding: map-get($boxConfig, "padding");
+  padding: $padding;
+  $borderConfig: map-get($boxConfig, "borderConfig");
+  @include borderStyle($borderConfig, $colorSchema);
+  $boxShadowConfig: map-get($boxConfig, "boxShadowConfig");
+  @include boxShadowStyle($boxShadowConfig, $colorSchema);
+}
