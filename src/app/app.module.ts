@@ -10,6 +10,8 @@ import { ExpandableDemoComponent } from './expandable-demo/expandable-demo.compo
 import {ExpandableModule} from "../../projects/ykit/src/lib/components/expandable/expandable.module";
 import { AccordionDemoComponent } from './accordion-demo/accordion-demo.component';
 import {AccordionModule} from "../../projects/ykit/src/lib/components/accordion/accordion.module";
+import { InputDemoComponent } from './input-demo/input-demo.component';
+import {FormModule} from "../../projects/ykit/src/lib/components/form/form.module";
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import {AccordionModule} from "../../projects/ykit/src/lib/components/accordion/
     ButtonDemoComponent,
     ExpandableDemoComponent,
     AccordionDemoComponent,
+    InputDemoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AvatarModule,
     ExpandableModule,
-    AccordionModule
+    AccordionModule,
+    FormModule
   ],
   providers: [],
   bootstrap: [AppComponent]

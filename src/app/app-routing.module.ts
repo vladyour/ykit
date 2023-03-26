@@ -4,6 +4,7 @@ import {AvatarDemoComponent} from "./avatar-demo/avatar-demo.component";
 import {ButtonDemoComponent} from "./button-demo/button-demo.component";
 import {ExpandableDemoComponent} from "./expandable-demo/expandable-demo.component";
 import {AccordionDemoComponent} from "./accordion-demo/accordion-demo.component";
+import {InputDemoComponent} from "./input-demo/input-demo.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'accordion',
     component: AccordionDemoComponent
+  },
+  {
+    path: 'input',
+    component: InputDemoComponent
   }
 ];
 

@@ -1,0 +1,13 @@
+$boxShadowConfig: (
+    "position": 2px 1px 5px 0px,
+    "colorName": "black",
+    "transparency": 0.9
+);
+
+@mixin boxShadowStyle($boxShadowConfig, $colorSchema) {
+  $position: map-get($boxShadowConfig, "position");
+  $colorName: map-get($boxShadowConfig, "colorName");
+  $color: map-get($colorSchema, $colorName);
+  $transparency: map-get($boxShadowConfig, "transparency");
+  //box-shadow: $position transparentize($color, $transparency);
+}
