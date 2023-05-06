@@ -5,6 +5,7 @@ import {ButtonDemoComponent} from "./button-demo/button-demo.component";
 import {ExpandableDemoComponent} from "./expandable-demo/expandable-demo.component";
 import {AccordionDemoComponent} from "./accordion-demo/accordion-demo.component";
 import {InputDemoComponent} from "./input-demo/input-demo.component";
+import {SelectDemoComponent} from "./select-demo/select-demo.component";
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'input',
     component: InputDemoComponent
+  },
+  {
+    path: 'select',
+    component: SelectDemoComponent
   }
 ];
 

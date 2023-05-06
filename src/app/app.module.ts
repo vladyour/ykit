@@ -12,6 +12,9 @@ import { AccordionDemoComponent } from './accordion-demo/accordion-demo.componen
 import {AccordionModule} from "../../projects/ykit/src/lib/components/accordion/accordion.module";
 import { InputDemoComponent } from './input-demo/input-demo.component';
 import {FormModule} from "../../projects/ykit/src/lib/components/form/form.module";
+import { SelectDemoComponent } from './select-demo/select-demo.component';
+import {SelectModule} from "../../projects/ykit/src/lib/components/select/select.module";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import {FormModule} from "../../projects/ykit/src/lib/components/form/form.modul
     ExpandableDemoComponent,
     AccordionDemoComponent,
     InputDemoComponent,
+    SelectDemoComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,9 @@ import {FormModule} from "../../projects/ykit/src/lib/components/form/form.modul
     AvatarModule,
     ExpandableModule,
     AccordionModule,
-    FormModule
+    FormModule,
+    SelectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

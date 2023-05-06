@@ -1,0 +1,28 @@
+<br>
+<br>
+<ykit-form-element>
+    <ykit-form-label>Selector with default display value</ykit-form-label>
+    <ykit-select [(ngModel)]="selectedValue" [options]="colors" displayField="name"></ykit-select>
+</ykit-form-element>
+
+<br>
+<br>
+<ykit-form-element>
+    <ykit-form-label>Selector with custom display value</ykit-form-label>
+    <ykit-select [(ngModel)]="selectedValueForCustomDisplay" [options]="colors" displayField="name">
+        <ykit-select-value>
+            <span [style.background-color]="selectedValueForCustomDisplay.rgb">{{selectedValueForCustomDisplay.name}}</span>
+        </ykit-select-value>
+    </ykit-select>
+</ykit-form-element>
+
+<br>
+<br>
+<ykit-form-element>
+    <ykit-form-label>Selector with custom option display value</ykit-form-label>
+    <ykit-select [(ngModel)]="selectedValueForCustomOptionDisplay" [options]="colors" displayField="name">
+        <ng-template #optionTemplate let-option>
+            <span [style.background-color]="option.rgb">{{option.name}}</span>
+        </ng-template>
+    </ykit-select>
+</ykit-form-element>

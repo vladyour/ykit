@@ -1,6 +1,6 @@
 @use 'border.component';
-@use 'box-shadow.component';
 @use 'box.component';
+@use 'drop-down';
 
 $formElementConfig: (
     "maxWidth": 350px,
@@ -11,6 +11,9 @@ $formElementConfig: (
         "width": 1px,
         "colorName": "info",
         "transparency": 0
+    ),
+    "valueConfig": (
+        "fontSize": 13px
     ),
     "labelConfig": (
         "fontSize": 12px
@@ -25,13 +28,17 @@ $formElementConfig: (
     display: block;
     vertical-align: top;
     max-width: map-get($formElementConfig, "maxWidth");
-    input {
+    input, ykit-select {
       display: block;
       background: transparent;
       box-sizing: border-box;
 
       $boxConfig: map-get($formElementConfig, "boxConfig");
       @include box.boxStyle($boxConfig, $colorSchema);
+
+      $valueConfig: map-get($formElementConfig, "valueConfig");
+      $valueFontSize: map-get($valueConfig, "fontSize");
+      font-size: $valueFontSize;
 
       width: 100%;
 
@@ -41,6 +48,42 @@ $formElementConfig: (
       }
 
       outline: none;
+    }
+
+    ykit-select {
+      cursor: pointer;
+      position: relative;
+
+      ykit-select-options {
+        width: 100%;
+
+        $background: map-get($colorSchema, "background");
+        background: $background;
+
+        $focusBorderConfig: map-get($formElementConfig, "focusBorderConfig");
+        @include border.borderStyle($focusBorderConfig, $colorSchema);
+        @include drop-down.dropDown();
+        box-sizing: border-box;
+
+        ykit-select-option {
+          display: block;
+          padding: 5px 10px;
+          cursor: pointer;
+          box-sizing: border-box;
+
+          &:hover {
+            $hoveredBackground: darken($background, 5%);
+            background: $hoveredBackground;
+          }
+        }
+      }
+
+      .ykit-select {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+      }
     }
 
     .ykit-form-label-wrapper, .ykit-form-message-wrapper {

@@ -1,0 +1,14 @@
+<div class="ykit-select">
+    <span class="ykit-select_value">
+        <ng-content select="ykit-select-value"></ng-content>
+        <span *ngIf="!valueComponent">{{getValueAsString()}}</span>
+    </span>
+    <span class="ykit-select_chevron">▾</span>
+    <ykit-select-options
+            [onSelect]="selectValue"
+            [options]="options"
+            [optionTemplate]="optionTemplate"
+            [displayField]="displayField"
+            [getDisplayValue]="getDisplayValue"
+    ></ykit-select-options>
+</div>
