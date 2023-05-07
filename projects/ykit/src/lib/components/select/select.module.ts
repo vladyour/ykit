@@ -5,6 +5,7 @@ import { SelectComponent } from './select/select.component';
 import { SelectOptionComponent } from './select-option/select-option.component';
 import { SelectOptionsComponent } from './select-options/select-options.component';
 import { SelectBehaviorDirective } from './select-behavior/select-behavior.directive';
+import { SelectNoValueComponent } from './select-no-value/select-no-value.component';
 
 
 
@@ -15,6 +16,7 @@ import { SelectBehaviorDirective } from './select-behavior/select-behavior.direc
     SelectOptionComponent,
     SelectOptionsComponent,
     SelectBehaviorDirective,
+    SelectNoValueComponent,
   ],
   imports: [
     CommonModule
@@ -22,6 +24,7 @@ import { SelectBehaviorDirective } from './select-behavior/select-behavior.direc
   exports: [
       SelectComponent,
       SelectValueComponent,
+      SelectNoValueComponent
   ]
 })
 export class SelectModule { }

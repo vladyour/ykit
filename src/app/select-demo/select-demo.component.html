@@ -1,22 +1,19 @@
 <br>
-<br>
 <ykit-form-element>
     <ykit-form-label>Selector with default display value</ykit-form-label>
     <ykit-select [(ngModel)]="selectedValue" [options]="colors" displayField="name"></ykit-select>
 </ykit-form-element>
 
 <br>
-<br>
 <ykit-form-element>
     <ykit-form-label>Selector with custom display value</ykit-form-label>
     <ykit-select [(ngModel)]="selectedValueForCustomDisplay" [options]="colors" displayField="name">
-        <ykit-select-value>
+        <ykit-select-value *ngIf="selectedValueForCustomDisplay">
             <span [style.background-color]="selectedValueForCustomDisplay.rgb">{{selectedValueForCustomDisplay.name}}</span>
         </ykit-select-value>
     </ykit-select>
 </ykit-form-element>
 
-<br>
 <br>
 <ykit-form-element>
     <ykit-form-label>Selector with custom option display value</ykit-form-label>
@@ -25,4 +22,24 @@
             <span [style.background-color]="option.rgb">{{option.name}}</span>
         </ng-template>
     </ykit-select>
+</ykit-form-element>
+
+<br>
+<ykit-form-element>
+    <ykit-form-label>Selector with empty value and default placeholder</ykit-form-label>
+    <ykit-select [(ngModel)]="emptyValue" [options]="colors" displayField="name"></ykit-select>
+</ykit-form-element>
+
+<ykit-form-element>
+    <ykit-form-label>Selector with empty value and custom placeholder</ykit-form-label>
+    <ykit-select [(ngModel)]="emptyValue" [options]="colors" displayField="name">
+        <ykit-select-no-value>Custom no-value placeholder</ykit-select-no-value>
+    </ykit-select>
+</ykit-form-element>
+
+<br>
+<ykit-form-element>
+    <ykit-form-label>Selector with value field</ykit-form-label>
+    <ykit-select [(ngModel)]="rgbValue" [options]="colors" displayField="name" valueField="rgb"></ykit-select>
+    <ykit-form-message>Text value: {{rgbValue}}</ykit-form-message>
 </ykit-form-element>

@@ -1,4 +1,4 @@
-<ykit-select-option *ngFor="let option of options" (click)="selectOption(option)">
+<ykit-select-option *ngFor="let option of options" (click)="selectOption(option)" [class.selected]="isSelected(option)">
     <span *ngIf="!optionTemplate">{{getValueAsString(option)}}</span>
     <ng-container *ngTemplateOutlet="optionTemplate; context: { $implicit: option }"></ng-container>
 </ykit-select-option>

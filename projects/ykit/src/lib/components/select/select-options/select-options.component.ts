@@ -15,6 +15,9 @@ export class SelectOptionsComponent {
   @Input()
   getDisplayValue: ((value: any) => string) | null
 
+  @Input()
+  selectedValue: any | null
+
   private _options: any[] = []
   get options(): any[] {
     return this._options;
@@ -48,4 +51,8 @@ export class SelectOptionsComponent {
   }
   @HostBinding('class.collapsed')
   collapsed = true
+
+  isSelected(option: any) {
+    return this.selectedValue === option
+  }
 }
