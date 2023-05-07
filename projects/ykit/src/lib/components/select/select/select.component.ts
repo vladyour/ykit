@@ -48,10 +48,25 @@ export class SelectComponent extends SelectBehaviorDirective implements ControlV
     }
   }
 
+  private searchValue: string | null = null
+
   private _options: any[] = []
   get options(): any[] {
-    return this._options
+    if (this.searchValue) {
+      return this._options.filter(option => {
+        const optionAsString = this.getValueAsString(option).toLowerCase()
+        return optionAsString.includes(this.searchValue!!.toLowerCase())
+      })
+    } else {
+      return this._options
+    }
   }
+
+  @Input()
+  searchPlaceholder: string | null
+
+  @Input()
+  noOptionsMessage: string | null
 
   @Input()
   set options(value: any[]) {
@@ -92,17 +107,22 @@ export class SelectComponent extends SelectBehaviorDirective implements ControlV
 
   writeValue(obj: any): void {
     this.value = obj
+    this.searchValue = null
   }
 
-  getValueAsString(): string {
+  getValueAsString(option = this.value): string {
     let value
-    if (this.getDisplayValue && this.value) {
-      value = this.getDisplayValue(this.value)
-    } else if (this.displayField && this.value) {
-      value = this.value[this.displayField] || this.value
+    if (this.getDisplayValue && option) {
+      value = this.getDisplayValue(option)
+    } else if (this.displayField && option) {
+      value = option[this.displayField] || option
     } else {
-      value = this.value
+      value = option
     }
     return value
+  }
+
+  onSearch(search: string) {
+    this.searchValue = search
   }
 }

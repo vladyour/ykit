@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input, TemplateRef} from '@angular/core';
+import {Component, EventEmitter, HostBinding, Input, Output, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'ykit-select-options',
@@ -8,6 +8,12 @@ export class SelectOptionsComponent {
 
   @Input()
   optionTemplate: TemplateRef<any> | null
+
+  @Input()
+  searchPlaceholder: string | null
+
+  @Input()
+  noOptionsMessage: string | null
 
   @Input()
   displayField: string | null
@@ -54,5 +60,20 @@ export class SelectOptionsComponent {
 
   isSelected(option: any) {
     return this.selectedValue === option
+  }
+
+  onClick(event: MouseEvent) {
+    event.stopPropagation()
+  }
+
+  @Output()
+  search = new EventEmitter<string>()
+
+  searchValue: string;
+
+  private timeout: any
+  onSearchChange() {
+    if (this.timeout) clearTimeout(this.timeout)
+    this.timeout = setTimeout(() => { this.search.emit(this.searchValue) }, 1000)
   }
 }

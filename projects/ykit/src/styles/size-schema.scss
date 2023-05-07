@@ -1,0 +1,11 @@
+$sizeSchema: (
+    "fontSizeSchema": (
+        "s": 10px,
+        "m": 12px,
+        "l": 14px,
+    )
+);
+
+@function getFontSize($sizeSchema, $size) {
+    @return map-get(map-get($sizeSchema, "fontSizeSchema"), $size);
+}

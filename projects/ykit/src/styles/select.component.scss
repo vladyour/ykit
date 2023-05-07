@@ -1,0 +1,82 @@
+@import "size-schema";
+
+$selectConfig: (
+    "search": (
+        "fontSizeName": "s",
+        "padding": 5px
+    ),
+    "noOptions": (
+        "fontSizeName": "m",
+        "padding": 5px
+    )
+);
+
+@mixin select($selectConfig, $colorSchema, $sizeSchema) {
+  ykit-select {
+    .ykit-select {
+      ykit-select-options {
+        .ykit-select_search {
+          input {
+            width: 100%;
+            padding: map-get(map-get($selectConfig, "search"), "padding");
+            $fontSizeName: map-get(map-get($selectConfig, "search"), "fontSizeName");
+            font-size: getFontSize($sizeSchema, $fontSizeName);
+            border: 0;
+            border-radius: 0;
+            border-bottom: 1px solid transparentize(map-get($colorSchema, "black"), 0.8);
+            outline: none;
+            box-sizing: border-box;
+
+            &:focus {
+              border: 0;
+              border-bottom: 1px solid transparentize(map-get($colorSchema, "black"), 0.8);
+              outline: none;
+            }
+          }
+        }
+        .ykit-select_option_not-found {
+          padding: map-get(map-get($selectConfig, "noOptions"), "padding");
+          $fontSizeName: map-get(map-get($selectConfig, "noOptions"), "fontSizeName");
+          font-size: getFontSize($sizeSchema, $fontSizeName);
+          color: transparentize(map-get($colorSchema, "black"), 0.4);
+          font-style: italic;
+        }
+      }
+    }
+  }
+}
+
+//region structure
+ykit-select {
+  *.closed {
+
+  }
+
+  .ykit-select {
+    .ykit-select_value {
+
+    }
+
+    .ykit-select_icons {
+      .ykit-select_reset {
+
+      }
+      .ykit-select_chevron {
+
+      }
+    }
+
+    ykit-select-options {
+      ykit-select_search {
+
+      }
+
+      ykit-select-option {
+        &.selected {
+
+        }
+      }
+    }
+  }
+}
+//endregion

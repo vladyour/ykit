@@ -28,8 +28,9 @@ export class SelectBehaviorDirective {
     }
   }
 
-  @HostListener('click')
-  onClick() {
+  @HostListener('click', ['$event'])
+  onClick(event: MouseEvent | null = null) {
+    console.log('CLOSING')
     if (this.closed) {
       this.closed = this.optionsComponent.toggleClose()
     } else if (this.closeOnSelect) {
@@ -37,10 +38,19 @@ export class SelectBehaviorDirective {
     }
   }
 
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (!this.element.nativeElement.contains(event.target)) {
+      this.closed = this.optionsComponent.toggleClose(true)
+    }
+  }
+
   @HostListener('document:keyup.escape', ['$event'])
   @HostListener('blur', ['$event'])
   onBlur(event: MouseEvent) {
-    this.closed = this.optionsComponent.toggleClose(true)
+    if (!this.element.nativeElement.contains(event.relatedTarget)) {
+      this.closed = this.optionsComponent.toggleClose(true)
+    }
   }
 
   private elementIsFocused() {

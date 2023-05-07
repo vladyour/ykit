@@ -1,7 +1,14 @@
 <br>
 <ykit-form-element>
     <ykit-form-label>Selector with default display value</ykit-form-label>
-    <ykit-select [(ngModel)]="selectedValue" [options]="colors" displayField="name"></ykit-select>
+    <ykit-select
+            [(ngModel)]="selectedValue"
+            [options]="colors"
+            displayField="name"
+            [closeOnSelect]="false"
+            searchPlaceholder="Custom search placeholder"
+            noOptionsMessage="Custom no options message"
+    ></ykit-select>
 </ykit-form-element>
 
 <br>
@@ -40,6 +47,6 @@
 <br>
 <ykit-form-element>
     <ykit-form-label>Selector with value field</ykit-form-label>
-    <ykit-select [(ngModel)]="rgbValue" [options]="colors" displayField="name" valueField="rgb"></ykit-select>
+    <ykit-select [(ngModel)]="rgbValue" [options]="colors" displayField="name" valueField="rgb" [closeOnSelect]="false"></ykit-select>
     <ykit-form-message>Text value: {{rgbValue}}</ykit-form-message>
 </ykit-form-element>

@@ -18,5 +18,8 @@
             [optionTemplate]="optionTemplate"
             [displayField]="displayField"
             [getDisplayValue]="getDisplayValue"
+            (search)="onSearch($event)"
+            [searchPlaceholder]="searchPlaceholder"
+            [noOptionsMessage]="noOptionsMessage"
     ></ykit-select-options>
 </div>

@@ -6,6 +6,7 @@ import { SelectOptionComponent } from './select-option/select-option.component';
 import { SelectOptionsComponent } from './select-options/select-options.component';
 import { SelectBehaviorDirective } from './select-behavior/select-behavior.directive';
 import { SelectNoValueComponent } from './select-no-value/select-no-value.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -18,9 +19,10 @@ import { SelectNoValueComponent } from './select-no-value/select-no-value.compon
     SelectBehaviorDirective,
     SelectNoValueComponent,
   ],
-  imports: [
-    CommonModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule
+    ],
   exports: [
       SelectComponent,
       SelectValueComponent,

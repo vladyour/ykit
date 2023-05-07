@@ -5,6 +5,8 @@
 @import "color-schema";
 @import "expandable.component";
 @import "form-element.component";
+@import "select.component";
+@import "size-schema";
 
 @mixin default() {
   @include bodyComponent($bodyConfig, $colorSchema);
@@ -13,6 +15,7 @@
   @include expandable($expandableConfig, $colorSchema);
   @include accordion();
   @include formElement($formElementConfig, $colorSchema);
+  @include select($selectConfig, $colorSchema, $sizeSchema);
 }
 
 @include default();
