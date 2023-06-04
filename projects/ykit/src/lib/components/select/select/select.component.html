@@ -1,9 +1,10 @@
 <div class="ykit-select">
-    <span class="ykit-select_value" *ngIf="value">
+    <span class="ykit-select_value" *ngIf="hasValue() && !multiple">
         <ng-content select="ykit-select-value"></ng-content>
         <span *ngIf="!valueComponent">{{getValueAsString()}}</span>
     </span>
-    <span class="ykit-select_no-value" *ngIf="!value">
+    <ykit-multi-value [values]="value" *ngIf="hasValue() && multiple" (onDelete)="deleteValueFromArray($event)"></ykit-multi-value>
+    <span class="ykit-select_no-value" *ngIf="!hasValue()">
         <ng-content select="ykit-select-no-value"></ng-content>
         <span *ngIf="!noValueComponent">Nothing selected</span>
     </span>

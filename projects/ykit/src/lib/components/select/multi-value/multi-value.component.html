@@ -1,0 +1,10 @@
+<div class="multi_value-container">
+    <div class="multi_value-item" *ngFor="let value of values; let i = index">
+        <span class="multi_value-item-value">
+            {{value.name}}
+        </span>
+        <span class="multi_value-item-delete" (click)="delete($event, i)">
+            ×
+        </span>
+    </div>
+</div>

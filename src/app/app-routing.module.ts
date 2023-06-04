@@ -6,6 +6,7 @@ import {ExpandableDemoComponent} from "./expandable-demo/expandable-demo.compone
 import {AccordionDemoComponent} from "./accordion-demo/accordion-demo.component";
 import {InputDemoComponent} from "./input-demo/input-demo.component";
 import {SelectDemoComponent} from "./select-demo/select-demo.component";
+import {MultiSelectDemoComponent} from "./multi-select-demo/multi-select-demo.component";
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'select',
     component: SelectDemoComponent
+  },
+  {
+    path: 'multi-select',
+    component: MultiSelectDemoComponent
   }
 ];
 

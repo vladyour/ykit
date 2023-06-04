@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import {Color} from "../select-demo/select-demo.component";
 
 @Component({
-  selector: 'app-select-demo',
-  templateUrl: './select-demo.component.html',
-  styleUrls: ['./select-demo.component.scss']
+  selector: 'app-multi-select-demo',
+  templateUrl: './multi-select-demo.component.html',
 })
-export class SelectDemoComponent {
+export class MultiSelectDemoComponent {
+
   colors: Color[] = [
     new Color("#d22d11", "Red"),
     new Color("#d2a511", "Yellow"),
@@ -19,13 +20,5 @@ export class SelectDemoComponent {
     new Color("#11d2d2", "Dark Cyan"),
     new Color("#1111d2", "Dark Blue"),
   ]
-  selectedValue: Color = this.colors[0]
-  selectedValueForCustomDisplay: Color = this.colors[1]
-  selectedValueForCustomOptionDisplay: Color = this.colors[2]
-  emptyValue: Color | null = null
-  rgbValue = this.colors[3].rgb
-}
-
-export class Color {
-  constructor(public rgb: string, public name: string) {}
+  selectedValue: Color[] = this.colors
 }

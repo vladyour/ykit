@@ -5,6 +5,7 @@
 @import "color-schema";
 @import "expandable.component";
 @import "form-element.component";
+@import "multi-select.component";
 @import "select.component";
 @import "size-schema";
 
@@ -16,6 +17,7 @@
   @include accordion();
   @include formElement($formElementConfig, $colorSchema);
   @include select($selectConfig, $colorSchema, $sizeSchema);
+  @include multiSelect($multiSelectConfig, $colorSchema)
 }
 
 @include default();

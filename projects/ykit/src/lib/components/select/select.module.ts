@@ -7,6 +7,7 @@ import { SelectOptionsComponent } from './select-options/select-options.componen
 import { SelectBehaviorDirective } from './select-behavior/select-behavior.directive';
 import { SelectNoValueComponent } from './select-no-value/select-no-value.component';
 import {FormsModule} from "@angular/forms";
+import { MultiValueComponent } from './multi-value/multi-value.component';
 
 
 
@@ -18,6 +19,7 @@ import {FormsModule} from "@angular/forms";
     SelectOptionsComponent,
     SelectBehaviorDirective,
     SelectNoValueComponent,
+    MultiValueComponent,
   ],
     imports: [
         CommonModule,

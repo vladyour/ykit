@@ -82,6 +82,9 @@ export class SelectComponent extends SelectBehaviorDirective implements ControlV
   @Input()
   valueField: string | null
 
+  @Input()
+  multiple: boolean = false
+
   resetValue(event: MouseEvent) {
     event.stopPropagation()
     this.selectValue(null)
@@ -89,7 +92,13 @@ export class SelectComponent extends SelectBehaviorDirective implements ControlV
 
   onChange: (newValue: any) => {}
   selectValue = (newValue: any | null) => {
-    const value = (newValue && this.valueField) ? newValue[this.valueField] : newValue
+    let value
+    if (this.multiple && newValue) {
+      value = this.value || []
+      value.push(newValue)
+    } else {
+      value = (newValue && this.valueField) ? newValue[this.valueField] : newValue
+    }
     this.onChange(value)
     this.writeValue(value)
   }
@@ -102,8 +111,7 @@ export class SelectComponent extends SelectBehaviorDirective implements ControlV
     this.onTouched = fn
   }
 
-  setDisabledState(isDisabled: boolean): void {
-  }
+  setDisabledState(isDisabled: boolean): void {}
 
   writeValue(obj: any): void {
     this.value = obj
@@ -124,5 +132,23 @@ export class SelectComponent extends SelectBehaviorDirective implements ControlV
 
   onSearch(search: string) {
     this.searchValue = search
+  }
+
+  hasValue() {
+    if (this.multiple) {
+      return this.value && this.value.length
+    } else {
+      return this.value
+    }
+  }
+
+  deleteValueFromArray(index: number) {
+    if (!this.multiple) {
+      console.warn("An element cannot be delete from an array as selector is not multiple.")
+      return
+    }
+    this.value.splice(index, 1)
+    this.onChange(this.value)
+    this.writeValue(this.value)
   }
 }

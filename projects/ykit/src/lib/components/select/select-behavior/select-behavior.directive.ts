@@ -30,7 +30,6 @@ export class SelectBehaviorDirective {
 
   @HostListener('click', ['$event'])
   onClick(event: MouseEvent | null = null) {
-    console.log('CLOSING')
     if (this.closed) {
       this.closed = this.optionsComponent.toggleClose()
     } else if (this.closeOnSelect) {

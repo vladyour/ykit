@@ -1,0 +1,50 @@
+@import "border.component";
+
+$multiSelectConfig: (
+    sizingConfig: (
+        padding: 3px,
+        margin: 2px
+    ),
+    borderConfig: map-merge($borderConfig, (radius: 3px, transparency: 0.8)),
+    colorConfig: (
+      deleteButtonColorName: "danger"
+    )
+);
+
+@mixin multiSelect($multiSelectConfig, $colorScheme) {
+  ykit-multi-value {
+    display: block;
+    width: 100%;
+    .multi_value-container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+
+      .multi_value-item {
+        $sizingConfig: map-get($multiSelectConfig, "sizingConfig");
+        $padding: map-get($sizingConfig, "padding");
+        $margin: map-get($sizingConfig, "margin");
+        $borderConfig: map-get($multiSelectConfig, "borderConfig");
+        @include borderStyle($borderConfig, $colorScheme);
+        margin-right: $margin;
+        margin-bottom: $margin;
+
+        display: flex;
+        align-items: center;
+        .multi_value-item-value {
+          padding: $padding;
+        }
+
+        .multi_value-item-delete {
+          padding: $padding;
+          &:hover {
+            $colorConfig: map-get($multiSelectConfig, "colorConfig");
+            $deleteButtonColorName: map-get($colorConfig, "deleteButtonColorName");
+            $deleteButtonColor: map-get($colorScheme, $deleteButtonColorName);
+            color: $deleteButtonColor;
+          }
+        }
+      }
+    }
+  }
+}

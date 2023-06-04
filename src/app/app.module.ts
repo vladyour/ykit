@@ -15,6 +15,7 @@ import {FormModule} from "../../projects/ykit/src/lib/components/form/form.modul
 import { SelectDemoComponent } from './select-demo/select-demo.component';
 import {SelectModule} from "../../projects/ykit/src/lib/components/select/select.module";
 import {FormsModule} from "@angular/forms";
+import { MultiSelectDemoComponent } from './multi-select-demo/multi-select-demo.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {FormsModule} from "@angular/forms";
     AccordionDemoComponent,
     InputDemoComponent,
     SelectDemoComponent,
+    MultiSelectDemoComponent,
   ],
   imports: [
     BrowserModule,
