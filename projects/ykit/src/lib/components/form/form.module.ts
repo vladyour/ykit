@@ -10,7 +10,7 @@ import { FormMessageComponent } from './form-message/form-message.component';
   declarations: [
     FormElementComponent,
     FormLabelComponent,
-    FormMessageComponent
+    FormMessageComponent,
   ],
   imports: [
     CommonModule

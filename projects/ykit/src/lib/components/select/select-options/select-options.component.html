@@ -1,0 +1,15 @@
+<div class="ykit-select_search">
+    <input
+            [(ngModel)]="searchValue"
+            (ngModelChange)="onSearchChange()"
+            [placeholder]="searchPlaceholder || 'Search'"
+            (click)="onClick($event)"
+    >
+</div>
+<ykit-select-option *ngFor="let option of options" (click)="selectOption(option)" [class.selected]="isSelected(option)">
+    <span *ngIf="!optionTemplate">{{getValueAsString(option)}}</span>
+    <ng-container *ngTemplateOutlet="optionTemplate; context: { $implicit: option }"></ng-container>
+</ykit-select-option>
+<div class="ykit-select_option_not-found" *ngIf="!options || !options.length">
+    {{noOptionsMessage || 'No options found'}}
+</div>

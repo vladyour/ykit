@@ -1,0 +1,25 @@
+<div class="ykit-select">
+    <span class="ykit-select_value" *ngIf="value">
+        <ng-content select="ykit-select-value"></ng-content>
+        <span *ngIf="!valueComponent">{{getValueAsString()}}</span>
+    </span>
+    <span class="ykit-select_no-value" *ngIf="!value">
+        <ng-content select="ykit-select-no-value"></ng-content>
+        <span *ngIf="!noValueComponent">Nothing selected</span>
+    </span>
+    <span class="ykit-select_icons">
+        <span class="ykit-select_reset" (click)="resetValue($event)">✖</span>
+        <span class="ykit-select_chevron">▾</span>
+    </span>
+    <ykit-select-options
+            [onSelect]="selectValue"
+            [options]="options"
+            [selectedValue]="value"
+            [optionTemplate]="optionTemplate"
+            [displayField]="displayField"
+            [getDisplayValue]="getDisplayValue"
+            (search)="onSearch($event)"
+            [searchPlaceholder]="searchPlaceholder"
+            [noOptionsMessage]="noOptionsMessage"
+    ></ykit-select-options>
+</div>
