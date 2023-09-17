@@ -17,6 +17,12 @@ $expandableConfig: (
 
 @mixin expandable($expandableConfig, $colorSchema) {
 
+  ykit-expandable.collapsed {
+    .ykit-expandable-content {
+      overflow: hidden;
+    }
+  }
+
   ykit-expandable {
     display: block;
     position: relative;
@@ -49,7 +55,6 @@ $expandableConfig: (
 
     ykit-expandable-content {
       display: block;
-      overflow: hidden;
 
       padding: $contentPaddingVertical $contentPaddingHorizontal;
       border-top: $borderColorConfig;
